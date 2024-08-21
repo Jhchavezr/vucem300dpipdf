@@ -40,20 +40,20 @@ if __name__ == '__main__':
      
     email = st.sidebar.text_input(label="Correo", placeholder="escribe tu correo")
 
-if st.sidebar.button("Recibir actualizaciones"):
-    with open("subscribers.txt", "a") as file:
-                file.write(email + "\n")
-    if email:
-        subject = f"Nuevo registro VUCEMAPP  {email} "
-        body = f"Se ha registrado: {email} \n"
-        success = send_email(subject, body, "your_verified_email@example.com")  # Replace with your email
-        
-        if success:
-            st.sidebar.success(f"¡Correo {email} registrado con éxito!")
+    if st.sidebar.button("Recibir actualizaciones"):
+        with open("subscribers.txt", "a") as file:
+                    file.write(email + "\n")
+        if email:
+            subject = f"Nuevo registro VUCEMAPP  {email} "
+            body = f"Se ha registrado: {email} \n"
+            success = send_email(subject, body, "your_verified_email@example.com")  # Replace with your email
+            
+            if success:
+                st.sidebar.success(f"¡Correo {email} registrado con éxito!")
+            else:
+                st.sidebar.error("Failed to send email.")
         else:
-            st.sidebar.error("Failed to send email.")
-    else:
-        st.sidebar.error("Por favor, ingrese una dirección de correo electrónico.")
+            st.sidebar.error("Por favor, ingrese una dirección de correo electrónico.")
 
     st.sidebar.write("Envianos un email: operaciones@marchainternacional.com")
     uploaded_files = st.file_uploader("Selecciona los pdfs que quieres juntar", type="pdf", accept_multiple_files=True)
