@@ -5,4 +5,7 @@ screenshot.png
 image.png
 image_test.jpg
 text_extract.py
-susbscribers.txt
+subscribers.txt
+splitted_pdfs/
+send_mail2.py
+.env
