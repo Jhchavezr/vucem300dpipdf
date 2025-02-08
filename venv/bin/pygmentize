@@ -1,4 +1,4 @@
-#!/home/user/vucempdf/venv/bin/python
+#!/home/jorge/vucempdf/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
