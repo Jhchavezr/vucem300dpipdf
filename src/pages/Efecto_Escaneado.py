@@ -104,7 +104,7 @@ def main():
         processed_images = [apply_scan_effect(img) for img in images]
         
         # Show preview
-        st.image(processed_images[0], caption="Scanned Effect Applied (Page 1)", use_column_width=True)
+        st.image(processed_images[0], caption="Scanned Effect Applied (Page 1)", use_container_width=True)
         
         # Save processed images as PDF
         output_pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
