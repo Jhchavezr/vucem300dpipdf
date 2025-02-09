@@ -9,3 +9,4 @@ subscribers.txt
 splitted_pdfs/
 send_mail2.py
 .env
+venv/
