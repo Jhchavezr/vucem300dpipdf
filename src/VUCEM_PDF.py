@@ -5,12 +5,9 @@ from PIL import Image
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-import smtplib
-import ssl
 from outil import send_email
 import math
 import time
-import subprocess
 
 
 load_dotenv()
@@ -32,7 +29,7 @@ def main():
         st.title("Generador de PDFs para VUCEM")
         st.subheader("Genera tus PDFs en 300dpi con peso menor a 10MB, sin batallar para Ventanilla Única de Comercio Exterior")
     with col1:
-        st.image("VERTICAL_LOGO_MARCHA.png", use_column_width=True )
+        st.image("VERTICAL_LOGO_MARCHA.png", use_container_width=True )
     
     st.sidebar.title("Recibe actualizaciones de las nuevas herramientas de comercio exterior")
     email = st.sidebar.text_input(label="Correo", placeholder="escribe tu correo")
