@@ -11,6 +11,10 @@ import math
 
 load_dotenv()
 
+from pathlib import Path
+
+APP_DIR = Path(__file__).resolve().parent
+logo_path = APP_DIR / "VERTICAL_LOGO_MARCHA.png"   # or APP_DIR / "assets" / "VERTICAL_LOGO_MARCHA.png"
 ## EN ESTA VERSION EL ARCHIVO PDF SE CONVERTIRA EN VARIOS SI PESA MAS DE 10 MB.
 
 def images_to_pdf(image_paths, output_pdf_path):
@@ -21,24 +25,23 @@ def images_to_pdf(image_paths, output_pdf_path):
 
 
 def main():
-    st.logo("ESCUDO_LOGO_MARCHA.png", link="https://www.marchainternacional.com")
+    st.set_page_config(page_title="Genera PDFs para VUCEM", page_icon="📄", layout="wide")
+    st.logo("https://marchainternacional.com/logos_marcha/ESCUDO_LOGO_MARCHA.png", link="https://www.marchainternacional.com")
     col1, col2 = st.columns([1, 5])
     with col2:
         st.title("Generador de PDFs para VUCEM")
         st.subheader("Genera tus PDFs en 300dpi con peso menor a 10MB, sin batallar para Ventanilla Única de Comercio Exterior")
     with col1:
-        st.image("VERTICAL_LOGO_MARCHA.png", use_column_width=True )
-    st.sidebar.title("Recibe actualizaciones de las nuevas herramientas de comercio exterior")
-    email = st.sidebar.text_input(label="Correo", placeholder="escribe tu correo")
-    if st.sidebar.button("Recibir actualizaciones"):
-        register_email(email)
-     
-    st.sidebar.subheader("¿Quiéres alguna app que simplifique tus procesos de comercio exterior?")
+        st.image("https://marchainternacional.com/logos_marcha/VERTICAL_LOGO_MARCHA.png", use_column_width=True )
+    
+    
+        st.sidebar.subheader("¿Quiéres alguna app que simplifique tus procesos de comercio exterior?")
     st.sidebar.markdown(
     """
     <p style="font-size: 16px;">
-        <strong>Sitio web:</strong> <a href="https://www.marchainternacional.com" target="_blank">marchainternacional.com</a><br>
-        <strong>Celular:</strong> <a href="https://wa.me/528443500729" target="_blank">+52844-350-0729</a><br>
+        <strong>Procesa los archivos del Datastage:</strong> <a href="https://apps.marchainternacional.com/DatastageApp/" target="_blank"> DATASTAGE APP.com</a><br>
+             <br>
+        <strong>Sitio web:</strong> <a href="https://www.marchainternacional.com" target="_blank">marchainternacional.com</a><br>        <strong>Celular:</strong> <a href="https://wa.me/528443500729" target="_blank">+52844-350-0729</a><br>
         <strong>Email:</strong> <a href="mailto:operaciones@marchainternacional.com">operaciones@marchainternacional.com</a>
     </p>
     """,
@@ -53,6 +56,13 @@ def main():
     
     if uploaded_files:
         process_files(uploaded_files)
+
+    # --- Add this at the end of main() ---
+    st.markdown("---")
+    st.markdown(
+        "Hecho con Streamlit y pandas por [Marcha Internacional](https://marchainternacional.com), github repo: [jhchavezr/vucem300dpipdf](https://github.com/Jhchavezr/vucem300dpipdf).",
+        unsafe_allow_html=True
+    )
 
 def convert_pdfs_to_images(files):
     """Convert each page of the PDFs into images."""
